@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Google.Protobuf.WellKnownTypes;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace Buchverwaltung
             }
             ExecuteCommand(cmd);
             dataAdapter = new MySqlDataAdapter(cmd.CommandText, con);
-            fillDataGrid(cmd.CommandText);
+            FillDataGrid(cmd.CommandText);
         }
 
         private void clearRequestText_Click(object sender, EventArgs e)
@@ -82,15 +83,15 @@ namespace Buchverwaltung
         {
             MySqlCommand cmd = new MySqlCommand("insert into buch(buchName, autor, verlag) values (@buchName, @autor, @verlag);", con);
             MySqlParameter buchNameParam = new MySqlParameter("@buchName", buchName.Text);
-            MySqlParameter autorParam = new MySqlParameter("@autor", getAutorID(autorSelect.Text));
-            MySqlParameter verlagParam = new MySqlParameter("@verlag", getVerlagID(verlagSelect.Text));
+            MySqlParameter autorParam = new MySqlParameter("@autor", GetAutorID(autorSelect.Text));
+            MySqlParameter verlagParam = new MySqlParameter("@verlag", GetVerlagID(verlagSelect.Text));
             cmd.Parameters.Add(buchNameParam);
             cmd.Parameters.Add(autorParam);
             cmd.Parameters.Add(verlagParam);
             ExecuteCommand(cmd);
         }
 
-        private int getAutorID(String name)
+        private int GetAutorID(String name)
         {
             MySqlCommand cmd = new MySqlCommand("select autorID from autor where autorName = @autorName;", con);
             MySqlParameter autorNameParam = new MySqlParameter("@autorName", name);
@@ -103,7 +104,7 @@ namespace Buchverwaltung
             return Convert.ToInt32(id);
         }
 
-        private int getVerlagID(String name)
+        private int GetVerlagID(String name)
         {
             MySqlCommand cmd = new MySqlCommand("select verlagID from verlag where verlagName = @verlagName;", con);
             MySqlParameter verlagNameParam = new MySqlParameter("@verlagName", name);
@@ -116,7 +117,7 @@ namespace Buchverwaltung
             return Convert.ToInt32(id);
         }
 
-        private void fillDataGrid(String cmd)
+        private void FillDataGrid(String cmd)
         {
             MySqlDataAdapter da;
             DataSet ds = new DataSet();
@@ -143,6 +144,40 @@ namespace Buchverwaltung
                 dataAdapter.Update(changes);
                 ((DataTable)dataGridView1.DataSource).AcceptChanges();
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 3)
+            {
+                UpdateComboBox();
+            }
+        }
+
+        private void UpdateComboBox()
+        {
+            autorSelect.Items.Clear();
+            autorSelect.Items.AddRange(GetNames(new MySqlCommand("select autorName from autor;", con)));
+            verlagSelect.Items.Clear();
+            verlagSelect.Items.AddRange(GetNames(new MySqlCommand("select verlagName from verlag;", con)));
+        }
+
+        private object[] GetNames(MySqlCommand cmd)
+        {
+            con.Open();
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            List<object> values = new List<object>();
+
+            while (reader.Read())
+            {
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    values.Add(reader[i].ToString());
+                }
+            }
+            con.Close();
+            return values.ToArray();
         }
     }
 }
