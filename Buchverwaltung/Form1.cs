@@ -129,26 +129,6 @@ namespace Buchverwaltung
             catch (Exception)
             {
             }
-        }
-
-        private void saveChanges_Click(object sender, EventArgs e)
-        {
-            // store the data of the dataGridView to the database
-            MySqlCommand cmd = new MySqlCommand(defaultQuery, con);
-            BindGrid(cmd);
-        }
-
-        private void BindGrid(MySqlCommand cmd)
-        {
-            cmd.CommandType = CommandType.Text;
-            using (MySqlDataAdapter sda = new MySqlDataAdapter(cmd))
-            {
-                using (DataTable dt = new DataTable())
-                {
-                    sda.Fill(dt);
-                    dataGridView1.DataSource = dt;
-                }
-            }
-        }
+        }     
     }
 }

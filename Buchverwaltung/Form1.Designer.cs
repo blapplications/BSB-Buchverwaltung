@@ -30,28 +30,27 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.clearRequestText = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.sendRequest = new System.Windows.Forms.Button();
             this.request = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.clearRequestText = new System.Windows.Forms.Button();
-            this.createVerlag = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.verlagName = new System.Windows.Forms.TextBox();
             this.createAutor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.autorName = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.createVerlag = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.verlagName = new System.Windows.Forms.TextBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.verlagSelect = new System.Windows.Forms.ComboBox();
+            this.autorSelect = new System.Windows.Forms.ComboBox();
             this.createBuch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.buchName = new System.Windows.Forms.TextBox();
-            this.autorSelect = new System.Windows.Forms.ComboBox();
-            this.verlagSelect = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.saveChanges = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,7 +73,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.saveChanges);
             this.tabPage1.Controls.Add(this.clearRequestText);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.sendRequest);
@@ -86,6 +84,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Übersicht";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // clearRequestText
+            // 
+            this.clearRequestText.Location = new System.Drawing.Point(86, 201);
+            this.clearRequestText.Name = "clearRequestText";
+            this.clearRequestText.Size = new System.Drawing.Size(173, 47);
+            this.clearRequestText.TabIndex = 3;
+            this.clearRequestText.Text = "Löschen";
+            this.clearRequestText.UseVisualStyleBackColor = true;
+            this.clearRequestText.Click += new System.EventHandler(this.clearRequestText_Click);
             // 
             // dataGridView1
             // 
@@ -126,6 +134,32 @@
             this.tabPage2.Text = "Neuer Autor";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // createAutor
+            // 
+            this.createAutor.Location = new System.Drawing.Point(258, 212);
+            this.createAutor.Name = "createAutor";
+            this.createAutor.Size = new System.Drawing.Size(100, 24);
+            this.createAutor.TabIndex = 5;
+            this.createAutor.Text = "Erstellen";
+            this.createAutor.UseVisualStyleBackColor = true;
+            this.createAutor.Click += new System.EventHandler(this.createAutor_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(217, 189);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Name";
+            // 
+            // autorName
+            // 
+            this.autorName.Location = new System.Drawing.Point(258, 186);
+            this.autorName.Name = "autorName";
+            this.autorName.Size = new System.Drawing.Size(100, 20);
+            this.autorName.TabIndex = 3;
+            // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.createVerlag);
@@ -138,33 +172,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Neuer Verlag";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.label5);
-            this.tabPage4.Controls.Add(this.label4);
-            this.tabPage4.Controls.Add(this.verlagSelect);
-            this.tabPage4.Controls.Add(this.autorSelect);
-            this.tabPage4.Controls.Add(this.createBuch);
-            this.tabPage4.Controls.Add(this.label3);
-            this.tabPage4.Controls.Add(this.buchName);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(621, 466);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Neues Buch";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // clearRequestText
-            // 
-            this.clearRequestText.Location = new System.Drawing.Point(86, 201);
-            this.clearRequestText.Name = "clearRequestText";
-            this.clearRequestText.Size = new System.Drawing.Size(173, 47);
-            this.clearRequestText.TabIndex = 3;
-            this.clearRequestText.Text = "Löschen";
-            this.clearRequestText.UseVisualStyleBackColor = true;
-            this.clearRequestText.Click += new System.EventHandler(this.clearRequestText_Click);
             // 
             // createVerlag
             // 
@@ -192,31 +199,56 @@
             this.verlagName.Size = new System.Drawing.Size(100, 20);
             this.verlagName.TabIndex = 3;
             // 
-            // createAutor
+            // tabPage4
             // 
-            this.createAutor.Location = new System.Drawing.Point(258, 212);
-            this.createAutor.Name = "createAutor";
-            this.createAutor.Size = new System.Drawing.Size(100, 24);
-            this.createAutor.TabIndex = 5;
-            this.createAutor.Text = "Erstellen";
-            this.createAutor.UseVisualStyleBackColor = true;
-            this.createAutor.Click += new System.EventHandler(this.createAutor_Click);
+            this.tabPage4.Controls.Add(this.label5);
+            this.tabPage4.Controls.Add(this.label4);
+            this.tabPage4.Controls.Add(this.verlagSelect);
+            this.tabPage4.Controls.Add(this.autorSelect);
+            this.tabPage4.Controls.Add(this.createBuch);
+            this.tabPage4.Controls.Add(this.label3);
+            this.tabPage4.Controls.Add(this.buchName);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(621, 466);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Neues Buch";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 189);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Name";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(214, 211);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Verlag";
             // 
-            // autorName
+            // label4
             // 
-            this.autorName.Location = new System.Drawing.Point(258, 186);
-            this.autorName.Name = "autorName";
-            this.autorName.Size = new System.Drawing.Size(100, 20);
-            this.autorName.TabIndex = 3;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(214, 184);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Autor";
+            // 
+            // verlagSelect
+            // 
+            this.verlagSelect.FormattingEnabled = true;
+            this.verlagSelect.Location = new System.Drawing.Point(255, 208);
+            this.verlagSelect.Name = "verlagSelect";
+            this.verlagSelect.Size = new System.Drawing.Size(100, 21);
+            this.verlagSelect.TabIndex = 9;
+            // 
+            // autorSelect
+            // 
+            this.autorSelect.FormattingEnabled = true;
+            this.autorSelect.Location = new System.Drawing.Point(255, 181);
+            this.autorSelect.Name = "autorSelect";
+            this.autorSelect.Size = new System.Drawing.Size(100, 21);
+            this.autorSelect.TabIndex = 8;
             // 
             // createBuch
             // 
@@ -244,40 +276,6 @@
             this.buchName.Size = new System.Drawing.Size(100, 20);
             this.buchName.TabIndex = 6;
             // 
-            // autorSelect
-            // 
-            this.autorSelect.FormattingEnabled = true;
-            this.autorSelect.Location = new System.Drawing.Point(255, 181);
-            this.autorSelect.Name = "autorSelect";
-            this.autorSelect.Size = new System.Drawing.Size(100, 21);
-            this.autorSelect.TabIndex = 8;
-            // 
-            // verlagSelect
-            // 
-            this.verlagSelect.FormattingEnabled = true;
-            this.verlagSelect.Location = new System.Drawing.Point(255, 208);
-            this.verlagSelect.Name = "verlagSelect";
-            this.verlagSelect.Size = new System.Drawing.Size(100, 21);
-            this.verlagSelect.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(214, 184);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "Autor";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(214, 211);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Verlag";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -287,16 +285,6 @@
             this.label6.Size = new System.Drawing.Size(102, 25);
             this.label6.TabIndex = 13;
             this.label6.Text = "blapplications";
-            // 
-            // saveChanges
-            // 
-            this.saveChanges.Location = new System.Drawing.Point(518, 201);
-            this.saveChanges.Name = "saveChanges";
-            this.saveChanges.Size = new System.Drawing.Size(97, 47);
-            this.saveChanges.TabIndex = 4;
-            this.saveChanges.Text = "Änderungen speichern";
-            this.saveChanges.UseVisualStyleBackColor = true;
-            this.saveChanges.Click += new System.EventHandler(this.saveChanges_Click);
             // 
             // Form1
             // 
@@ -347,7 +335,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox buchName;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button saveChanges;
     }
 }
 
