@@ -51,6 +51,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.buchName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,6 +74,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.clearRequestText);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.sendRequest);
@@ -102,6 +104,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(609, 206);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowValidated);
             // 
             // sendRequest
             // 
@@ -286,6 +289,15 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "blapplications";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(518, 201);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 47);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Änderungen speichern";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,6 +347,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox buchName;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button1;
     }
 }
 

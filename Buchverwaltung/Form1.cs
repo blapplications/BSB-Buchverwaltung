@@ -16,6 +16,7 @@ namespace Buchverwaltung
 
         private MySqlConnection con = new MySqlConnection(Database.GlobalMySQLCon);
         private String defaultQuery = "select * from autor;";
+        private MySqlDataAdapter dataAdapter;
 
         public Form1()
         {
@@ -34,6 +35,7 @@ namespace Buchverwaltung
                 cmd = new MySqlCommand(request.Text, con);
             }
             ExecuteCommand(cmd);
+            dataAdapter = new MySqlDataAdapter(cmd.CommandText, con);
             fillDataGrid(cmd.CommandText);
         }
 
@@ -129,6 +131,18 @@ namespace Buchverwaltung
             catch (Exception)
             {
             }
-        }     
+        }
+
+        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            DataTable changes = ((DataTable)dataGridView1.DataSource).GetChanges();
+            if (changes != null)
+            {
+                MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(dataAdapter);
+                dataAdapter.UpdateCommand = commandBuilder.GetUpdateCommand();
+                dataAdapter.Update(changes);
+                ((DataTable)dataGridView1.DataSource).AcceptChanges();
+            }
+        }
     }
 }
